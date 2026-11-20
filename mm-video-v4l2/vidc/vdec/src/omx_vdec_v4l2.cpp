@@ -4134,8 +4134,6 @@ OMX_ERRORTYPE  omx_vdec::get_parameter(OMX_IN OMX_HANDLETYPE     hComp,
                     case V4L2_MPEG_VIDEO_H264_LEVEL_5_2:
                         pParam->eLevel = OMX_VIDEO_AVCLevel52;
                         break;
-                    case V4L2_MPEG_VIDEO_H264_LEVEL_UNKNOWN:
-                        return OMX_ErrorUnsupportedIndex;
                     default:
                         eRet = OMX_ErrorUnsupportedIndex;
                         break;
