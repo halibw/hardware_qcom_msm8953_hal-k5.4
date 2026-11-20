@@ -182,7 +182,7 @@ static inline long get_config_set_param()
 #ifdef AUDIO_GKI_ENABLED
     config_param = AUDIO_EFFECTS_CONFIG_SET;
 #else
-    config_param = CONFIG_SET;
+    config_param = AUDIO_EFFECT_CONFIG_SET;
 #endif
 
     return config_param;
