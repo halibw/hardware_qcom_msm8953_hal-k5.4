@@ -12,7 +12,7 @@ LOCAL_CFLAGS                  := -Wno-unused-parameter -fexceptions -DLOG_TAG=\"
 LOCAL_HW_INTF_PATH_1          := fb
 LOCAL_SHARED_LIBRARIES        := libdl libsdmutils
 
-ifneq ($(TARGET_IS_HEADLESS), true)
+ifeq ($(filter true,$(TARGET_IS_HEADLESS) $(TARGET_USES_LEGACY_FBDEV)),)
     LOCAL_CFLAGS              += -DCOMPILE_DRM -isystem external/libdrm
     LOCAL_SHARED_LIBRARIES    += libdrm libdrmutils
     LOCAL_HW_INTF_PATH_2      := drm
@@ -45,7 +45,7 @@ LOCAL_SRC_FILES               := core_interface.cpp \
                                  $(LOCAL_HW_INTF_PATH_1)/hw_scale.cpp \
                                  $(LOCAL_HW_INTF_PATH_1)/hw_events.cpp
 
-ifneq ($(TARGET_IS_HEADLESS), true)
+ifeq ($(filter true,$(TARGET_IS_HEADLESS) $(TARGET_USES_LEGACY_FBDEV)),)
     LOCAL_SRC_FILES           += $(LOCAL_HW_INTF_PATH_2)/hw_info_drm.cpp \
                                  $(LOCAL_HW_INTF_PATH_2)/hw_device_drm.cpp \
                                  $(LOCAL_HW_INTF_PATH_2)/hw_events_drm.cpp \

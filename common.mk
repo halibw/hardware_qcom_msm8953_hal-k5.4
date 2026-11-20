@@ -68,6 +68,10 @@ ifeq ($(TARGET_USES_GRALLOC1), true)
     common_flags += -DUSE_GRALLOC1
 endif
 
+ifeq ($(TARGET_USES_LEGACY_FBDEV),true)
+    common_flags += -DUSE_LEGACY_FBDEV
+endif
+
 #Common libraries external to display HAL
 common_libs := liblog libutils libcutils libhardware
 common_deps  :=

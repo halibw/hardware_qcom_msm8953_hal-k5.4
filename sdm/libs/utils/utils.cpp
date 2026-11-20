@@ -64,8 +64,12 @@ void CloseFd(int *fd) {
 }
 
 DriverType GetDriverType() {
+#ifdef USE_LEGACY_FBDEV
+    return DriverType::FB;
+#else
     const char *fb_caps = "/sys/devices/virtual/graphics/fb0/mdp/caps";
     // 0 - File exists
     return Sys::access_(fb_caps, F_OK) ? DriverType::DRM : DriverType::FB;
+#endif
 }
 }  // namespace sdm

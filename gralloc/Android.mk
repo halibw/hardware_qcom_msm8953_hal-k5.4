@@ -12,6 +12,9 @@ LOCAL_C_INCLUDES              := $(common_includes)
 LOCAL_CFLAGS                  := $(common_flags) -DLOG_TAG=\"qdgralloc\" -Wall -Werror -Wno-enum-enum-conversion
 LOCAL_SHARED_LIBRARIES        := $(common_libs) libqdMetaData libsync libgrallocutils \
                                  android.hardware.graphics.common@1.1
+ifeq ($(TARGET_KERNEL_VERSION),5.4)
+LOCAL_SHARED_LIBRARIES        += libion
+endif
 ifeq ($(TARGET_KERNEL_VERSION), 4.14)
   ifneq ($(LIBION_HEADER_PATH_WRAPPER), )
     include $(LIBION_HEADER_PATH_WRAPPER)
